@@ -10,9 +10,12 @@ type LevelFullID struct {
 type HofEntry struct {
 	PlayerAccountIDs []string
 	Level            LevelFullID
-	Value            int64
-	Date             time.Time
-	Country          string
+	// Either a score, or a number of frames
+	Value int64
+	// 0 = score. 1 = speed run.
+	Type    int32
+	Date    time.Time
+	Country string
 }
 
 type PaginatedAllScores struct {
