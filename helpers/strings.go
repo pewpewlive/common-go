@@ -17,3 +17,19 @@ func StripColorsFromString(name string) string {
 	}
 	return s
 }
+
+// MostFrequentString finds the most frequent string in a string slice
+func MostFrequentString(arr []string) string { // assuming no tie
+	m := map[string]int{}
+	var maxCnt int
+	var mostFrequent string
+	for _, a := range arr {
+		m[a]++
+		if m[a] > maxCnt {
+			maxCnt = m[a]
+			mostFrequent = a
+		}
+	}
+	return mostFrequent
+}
+
