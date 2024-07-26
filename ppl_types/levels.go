@@ -1,4 +1,4 @@
-package ppl_json
+package ppl_types
 
 // RankThresholds holds the medals data in a manifest.
 type RankThresholds struct {
