@@ -1,7 +1,7 @@
 package ppl_types
 
 type HofEntry struct {
-	// Player account IDs separated by a comma. Example: "qEY3iKDcv8JQvNKhNdCXb,KnogIETlchLFxgxtLD72o"
+	// Player account IDs separated by a | (bar, pipe). Example: "qEY3iKDcv8JQvNKhNdCXb|KnogIETlchLFxgxtLD72o"
 	PlayerAccountIDs string `csv:"account_ids"`
 	LevelUUID        string `csv:"level_uuid"`
 	LevelVersion     int32  `csv:"level_version"`
