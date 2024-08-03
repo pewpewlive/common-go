@@ -15,6 +15,18 @@ func AssertEq(t *testing.T, expected string, actual string) {
 	}
 }
 
+func TestStripColorsFromString(t *testing.T) {
+	AssertEq(t, "", common_helpers.StripColorsFromString(""))
+	AssertEq(t, "aaa", common_helpers.StripColorsFromString("aaa"))
+	AssertEq(t, "", common_helpers.StripColorsFromString("#00112233"))
+	AssertEq(t, "AAABBB", common_helpers.StripColorsFromString("AAA#00112233BBB"))
+	AssertEq(t, "AAABBB", common_helpers.StripColorsFromString("AAA#00112233#44556677BBB"))
+	AssertEq(t, "AAABBBCCC", common_helpers.StripColorsFromString("AAA#00112233BBB#44556677CCC"))
+	// Incorrectly formatted strings
+	AssertEq(t, "AAA", common_helpers.StripColorsFromString("AAA#0011"))
+	AssertEq(t, "AAABBB", common_helpers.StripColorsFromString("AAA#0011#22334455BBB"))
+}
+
 func TestFormatTickToString(t *testing.T) {
 	// test centiseconds
 	AssertEq(t, "0:00.00", common_helpers.FormatTicksToString(0))
