@@ -41,7 +41,7 @@ func MostFrequentString(arr []string) string { // assuming no tie
 
 // Formats a duration specified in ticks.
 // Assumes that the tick rate is 30 Hz.
-func FormatTicksToString(ticks int) string {
+func FormatTicksToString(ticks int64) string {
 	const tickRate = 30
 
 	float_seconds := float64(ticks) / tickRate
@@ -52,7 +52,7 @@ func FormatTicksToString(ticks int) string {
 	}
 
 	seconds := (ticks % (tickRate * 60)) / tickRate
-	seconds_str := strconv.Itoa(seconds)
+	seconds_str := strconv.FormatInt(seconds, 10)
 	if seconds < 10 {
 		seconds_str = "0" + seconds_str
 	}
