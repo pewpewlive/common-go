@@ -41,7 +41,7 @@ func MostFrequentString(arr []string) string { // assuming no tie
 
 // Formats a duration specified in ticks.
 // Assumes that the tick rate is 30 Hz.
-func FormatTickToString(ticks int) string {
+func FormatTicksToString(ticks int) string {
 	const tickRate = 30
 
 	float_seconds := float64(ticks) / tickRate
