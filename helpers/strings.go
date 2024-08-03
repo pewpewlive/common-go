@@ -1,5 +1,11 @@
 package helpers
 
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
+
 // StripColorsFromString removes the colors of a given username.
 func StripColorsFromString(name string) string {
 	s := ""
@@ -33,3 +39,26 @@ func MostFrequentString(arr []string) string { // assuming no tie
 	return mostFrequent
 }
 
+// Formats a duration specified in ticks.
+// Assumes that the tick rate is 30 Hz.
+func FormatTickToString(ticks int) string {
+	const tickRate = 30
+
+	float_seconds := float64(ticks) / tickRate
+	centisecond := int(math.Floor(float_seconds*100)) % 100
+	centisecond_str := strconv.Itoa(centisecond)
+	if centisecond < 10 {
+		centisecond_str = "0" + centisecond_str
+	}
+
+	seconds := (ticks % (tickRate * 60)) / tickRate
+	seconds_str := strconv.Itoa(seconds)
+	if seconds < 10 {
+		seconds_str = "0" + seconds_str
+	}
+
+	minutes := ticks / (tickRate * 60)
+
+	formated := fmt.Sprintf("%d:%s.%s", minutes, seconds_str, centisecond_str)
+	return formated
+}
