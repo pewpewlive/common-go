@@ -27,6 +27,11 @@ func TestStripColorsFromString(t *testing.T) {
 	AssertEq(t, "AAABBB", common_helpers.StripColorsFromString("AAA#0011#22334455BBB"))
 }
 
+func TestMostFrequentString(t *testing.T) {
+	AssertEq(t, "bar", common_helpers.MostFrequentString([]string{"foo", "bar", "bar"}))
+	AssertEq(t, "bar", common_helpers.MostFrequentString([]string{"foo", "bar", "qux", "foo", "bar", "bar", "qux"}))
+}
+
 func TestFormatTickToString(t *testing.T) {
 	// test centiseconds
 	AssertEq(t, "0:00.00", common_helpers.FormatTicksToString(0))
