@@ -1,5 +1,11 @@
 package ppl_types
 
+// Level holds the pair of level UUID and version.
+type Level struct {
+	LevelUUID    string
+	LevelVersion int32
+}
+
 // RankThresholds holds the medals data in a manifest.
 type RankThresholds struct {
 	Bronze *int64 `json:"bronze"`
