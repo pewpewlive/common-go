@@ -28,6 +28,7 @@ func TestStripColorsFromString(t *testing.T) {
 }
 
 func TestMostFrequentString(t *testing.T) {
+	AssertEq(t, "foo", common_helpers.MostFrequentString([]string{"foo"}))
 	AssertEq(t, "bar", common_helpers.MostFrequentString([]string{"foo", "bar", "bar"}))
 	AssertEq(t, "bar", common_helpers.MostFrequentString([]string{"foo", "bar", "qux", "foo", "bar", "bar", "qux"}))
 }
