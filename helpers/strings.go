@@ -1,10 +1,56 @@
 package helpers
 
 import (
+	"bufio"
 	"fmt"
 	"math"
 	"strconv"
+	"strings"
 )
+
+type ExpandedChar struct {
+	Char  rune
+	Color uint32
+}
+
+func StringToExpandedChars(str string) []ExpandedChar {
+	buffer := bufio.NewReader(strings.NewReader(str))
+
+	expandedChars := make([]ExpandedChar, 0)
+	escapedChar := false
+	var currentColor uint32
+	for {
+		char, _, err := buffer.ReadRune()
+		if err != nil {
+			break
+		}
+
+		if char == '#' && !escapedChar {
+			colorBuffer := make([]byte, 8)
+			_, err := buffer.Read(colorBuffer)
+			if err != nil {
+				break
+			}
+
+			color, err := strconv.ParseInt(string(colorBuffer), 16, 0)
+			if err != nil {
+				break
+			}
+			currentColor = uint32(color)
+			continue
+		}
+
+		if char == '\\' && !escapedChar {
+			escapedChar = true
+			continue
+		}
+
+		escapedChar = false
+		expandedChars = append(expandedChars, ExpandedChar{Char: char, Color: currentColor})
+	}
+
+	return expandedChars
+}
 
 // StripColorsFromString removes the colors of a given username.
 func StripColorsFromString(name string) string {

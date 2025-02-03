@@ -9,10 +9,31 @@ import (
 	common_helpers "github.com/pewpewlive/common-go/helpers"
 )
 
-func AssertEq(t *testing.T, expected string, actual string) {
+func AssertEq(t *testing.T, expected any, actual any) {
 	if !reflect.DeepEqual(expected, actual) {
 		t.Errorf("\nExpected\n%v\nbut got\n%v", expected, actual)
 	}
+}
+
+func TestStringToExpandedChars(t *testing.T) {
+	expected := []common_helpers.ExpandedChar{
+		{Char: 'M', Color: 0xffff00ff},
+		{Char: 'ū', Color: 0xffff00ff},
+		{Char: 's', Color: 0xffff00ff},
+		{Char: 'ų', Color: 0xffff00ff},
+		{Char: 'Š', Color: 0x007fffff},
+		{Char: 'o', Color: 0x007fffff},
+		{Char: 'k', Color: 0xffff00ff},
+		{Char: 'i', Color: 0x00ffffff},
+		{Char: 'ų', Color: 0x000000ff},
+		{Char: 'P', Color: 0xffff00ff},
+		{Char: 'a', Color: 0xffff00ff},
+		{Char: 'm', Color: 0xffff00ff},
+	}
+
+	actual := common_helpers.StringToExpandedChars("#ffff00ffMūsų#007fffffŠo#ffff00ffk#00ffffffi#000000ffų#ffff00ffPam")
+
+	AssertEq(t, expected, actual)
 }
 
 func TestStripColorsFromString(t *testing.T) {
