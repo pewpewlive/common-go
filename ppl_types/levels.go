@@ -13,6 +13,7 @@ type LevelManifestJSON struct {
 	Description         *[]string       `json:"descriptions"`
 	Information         *string         `json:"information"`
 	EntryPoint          *string         `json:"entry_point"`
-	RankThresholds1P    *RankThresholds `json:"rank_thresholds_1p"`
+	ScoreThresholds1P   *RankThresholds `json:"rank_thresholds_1p"`
+	SpeedThresholds1P   *RankThresholds `json:"speed_thresholds_1p"`
 	HasScoreLeaderboard *bool           `json:"has_score_leaderboard"`
 }
