@@ -109,7 +109,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{symbiosis}, kamikaze, 100},
 
 		// Featured community levels
-		{[]Level{cozone}, asteroid, 600},
+		{[]Level{cozone}, asteroid, 1000},
 		{[]Level{cozone}, mothership, 10},
 		{[]Level{claustrophobia}, mothership, 50},
 		{[]Level{claustrophobia}, baf, 200},
