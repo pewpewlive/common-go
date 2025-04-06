@@ -24,7 +24,7 @@ func areLevelsEqual(a, b []LevelIDWithName) bool {
 	return true
 }
 
-// A function type used interally to get back a LevelIDWithName constructed by the server
+// A function type used internally to get back a LevelIDWithName constructed by the server
 type LevelIDWithNameFunc func(levelUUID string) (*LevelIDWithName, error)
 
 func GenerateRandomDailyQuests(expiration int64, questID int, levelIdFunc LevelIDWithNameFunc) (*DailyQuests, error) {
