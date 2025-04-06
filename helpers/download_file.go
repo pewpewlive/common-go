@@ -1,7 +1,7 @@
 package helpers
 
 import (
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -15,7 +15,7 @@ func DownloadFile(url string, urlValues url.Values, destinationPath string) erro
 		log.Printf("Failed to get %s", url)
 		return err
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
