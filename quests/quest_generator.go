@@ -255,7 +255,7 @@ func RandomSurviveDurationQuest(levelIdFunc LevelIDWithNameFunc) (*SurviveDurati
 		{madreinka, 120, 200},
 		{bombardment, 90, 100},
 		{bombardment, 120, 200},
-		{bouncy_recoil, 120 100},
+		{bouncy_recoil, 120, 100},
 		{bouncy_recoil, 180, 200},
 		{restanvi, 30, 100},
 		{restanvi, 60, 200},
