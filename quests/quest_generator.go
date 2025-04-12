@@ -117,10 +117,12 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{neo_grid}, rollingCube, 150},
 		{[]Level{virtual_dream}, asteroid, 100},
 		{[]Level{virtual_dream}, baf, 400},
+		{[]Level{virtual_dream}, mothership, 60},
 		{[]Level{skpg}, mothership, 30},
 		{[]Level{skpg}, inertiac, 15},
 		{[]Level{invasion}, wary, 30},
 		{[]Level{invasion}, mothership, 30},
+		{[]Level{invasion}, inertiac, 30},
 		{[]Level{emerald}, bafBlue, 100},
 		{[]Level{emerald}, wary, 20},
 		{[]Level{emerald}, mothership, 30},
@@ -128,6 +130,15 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{madreinka}, mothership, 50},
 		{[]Level{bombardment}, rollingCube, 100},
 		{[]Level{bombardment}, mothership, 100},
+		{[]Level{bouncy_recoil}, wary, 60},
+		{[]Level{bouncy_recoil}, mothership, 60},
+		{[]Level{restanvi}, mothership, 1000},
+		{[]Level{restanvi}, rollingCube, 100},
+		{[]Level{restanvi}, wary, 50},
+		// Requirements to be made by someone with access to tools
+		//   which estimate amount of enemies killed in a round
+		// {[]Level{linkage}, asteroid, 10000},
+		// {[]Level{linkage}, rollingCube, 2000},
 	}
 
 	template := getRandomElement(level_kill_requirements)
@@ -176,10 +187,27 @@ func RandomReachScoreQuest(levelIdFunc LevelIDWithNameFunc) (*ReachScoreQuest, e
 		// Featured levels
 		{eskiv1024, 150, 100},
 		{eskiv1024, 250, 200},
+		{cozone, 20000, 100},
+		{cozone, 50000, 200},
 		{claustrophobia, 5000, 100},
 		{claustrophobia, 9000, 200},
-
-		{bombardment, 25000, 100},
+		{neo_grid, 8000, 100},
+		{neo_grid, 14000, 200},
+		{virtual_dream, 9000, 100},
+		{virtual_dream, 18000, 200},
+		{invasion, 7000, 100},
+		{emerald, 8000, 100},
+		{emerald, 14000, 200},
+		{madreinka, 20000, 100},
+		{madreinka, 40000, 200},
+		{bombardment, 10000, 100},
+		{bombardment, 25000, 200},
+		{bouncy_recoil, 8000, 100},
+		{bouncy_recoil, 14000, 200},
+		// {restanvi, 100000, 100},
+		// {restanvi, 200000, 200},
+		{linkage, 15000, 100},
+		{linkage, 35000, 200},
 	}
 	template := getRandomElement(reach_score_requirements)
 	level, err := levelIdFunc(LevelStrings[template.Level])
@@ -215,8 +243,24 @@ func RandomSurviveDurationQuest(levelIdFunc LevelIDWithNameFunc) (*SurviveDurati
 		// {partitioner, 100, 300},
 
 		// Featured community levels
+		{cozone, 90, 100},
+		{cozone, 150, 200},
 		{claustrophobia, 50, 100},
-		{bombardment, 120, 100},
+		{neo_grid, 60, 100},
+		{virtual_dream, 90, 100},
+		{virtual_dream, 120, 200},
+		{emerald, 60, 100},
+		{emerald, 90, 200},
+		{madreinka, 60, 100},
+		{madreinka, 120, 200},
+		{bombardment, 90, 100},
+		{bombardment, 120, 200},
+		{bouncy_recoil, 120 100},
+		{bouncy_recoil, 180, 200},
+		{restanvi, 30, 100},
+		{restanvi, 60, 200},
+		{linkage, 60, 100},
+		{linkage, 120, 200},
 	}
 	template := getRandomElement(survive_requirements)
 	level, err := levelIdFunc(LevelStrings[template.Level])
