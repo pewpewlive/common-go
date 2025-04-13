@@ -10,7 +10,11 @@ const (
 	baf
 	bafBlue
 	bafRed
+	brownian
+	copter
 	crowder
+	dodger
+	exploder
 	inertiac
 	kamikaze
 	mothership
@@ -18,6 +22,7 @@ const (
 	rollingCube
 	rollingSphere
 	spiny
+	splitter
 	ufo
 	wary
 )
@@ -27,7 +32,11 @@ var EnemyTypeStrings = map[EnemyType]string{
 	baf:             "BAF",
 	bafBlue:         "BAF_BLUE",
 	bafRed:          "BAF_RED",
+	brownian:        "BROWNIAN",
+	copter:          "COPTER",
 	crowder:         "CROWDER",
+	dodger:          "DODGER",
+	exploder:        "EXPLODER",
 	inertiac:        "INERTIAC",
 	kamikaze:        "KAMIKAZE",
 	mothership:      "MOTHERSHIP",
@@ -35,6 +44,7 @@ var EnemyTypeStrings = map[EnemyType]string{
 	rollingCube:     "ROLLING_CUBE",
 	rollingSphere:   "ROLLING_SPHERE",
 	spiny:           "SPINY",
+	splitter:        "SPLITTER",
 	ufo:             "UFO",
 	wary:            "WARY",
 }
