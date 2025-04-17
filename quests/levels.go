@@ -12,6 +12,7 @@ const (
 	pandemonium
 	partitioner
 	symbiosis
+	// Featured
 	eskiv1024
 	cozone
 	claustrophobia
@@ -25,18 +26,21 @@ const (
 	bouncy_recoil
 	restanvi
 	linkage
+	// Non featured
+	pinctagon
 )
 
 var LevelStrings = map[Level]string{
-	asteroids:      "asteroids",
-	hexagon:        "hexagon",
-	eskiv:          "eskiv",
-	waves:          "waves",
-	fury:           "fury",
-	ceasefire:      "ceasefire",
-	pandemonium:    "pandemonium",
-	partitioner:    "partitioner",
-	symbiosis:      "symbiosis",
+	asteroids:   "asteroids",
+	hexagon:     "hexagon",
+	eskiv:       "eskiv",
+	waves:       "waves",
+	fury:        "fury",
+	ceasefire:   "ceasefire",
+	pandemonium: "pandemonium",
+	partitioner: "partitioner",
+	symbiosis:   "symbiosis",
+	// Featured
 	eskiv1024:      "8moMdFFM34sHzu1YZCMHl",
 	cozone:         "OqbntT5G0qJO1kxeP1jpT",
 	claustrophobia: "RwTg2aQLsJKBpt3VETRQG",
@@ -50,4 +54,6 @@ var LevelStrings = map[Level]string{
 	bouncy_recoil:  "iuCC8YPMdzrgESaOiqKc4",
 	restanvi:       "ag9zfnBld3Bldy1vbmxpbmVyFwsSCkxldmVsRW50cnkYgICAqo6EoQkM",
 	linkage:        "ag9zfnBld3Bldy1vbmxpbmVyFwsSCkxldmVsRW50cnkYgICAws3MmwkM",
+	// Non featured
+	pinctagon: "adCPFI5GMhVayYVGSsST1",
 }
