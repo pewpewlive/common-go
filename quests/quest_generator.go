@@ -132,7 +132,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{bombardment}, mothership, 100},
 		{[]Level{bouncy_recoil}, wary, 60},
 		{[]Level{bouncy_recoil}, mothership, 60},
-		{[]Level{restanvi}, mothership, 1000},
+		{[]Level{restanvi}, baf, 1000},
 		{[]Level{restanvi}, rollingCube, 100},
 		{[]Level{restanvi}, wary, 50},
 		// Requirements to be made by someone with access to tools
