@@ -43,7 +43,7 @@ const (
 	synthesis
 	the_generator
 	cubes_and_squares
-	cubes_and_squares
+	cubes_and_squares_plus
 	crush_the_casuals
 	inertiacs_spawner
 	roulette
@@ -140,7 +140,7 @@ var LevelStrings = map[Level]string{
 	synthesis      : "r0wvVoXcZ1XauROJdts5L",
 	the_generator  : "KTN7DudFR2ja4uYl4i39_",
 	cubes_and_squares: "pnoksVSPYlAcGMb62KoVh",
-	cubes_and_squares: "Yzv5XQfWLo0n1jU4i8edH",
+	cubes_and_squares_plus: "Yzv5XQfWLo0n1jU4i8edH",
 	crush_the_casuals: "vJqshN0BpN7wRu4nijkmQ",
 	inertiacs_spawner: "ZlxFwr1dXdXsZslFNyzL_",
 	roulette       : "C2RHXNcDabo5KWzrw0cop",
