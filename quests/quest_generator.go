@@ -139,6 +139,48 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		//   which estimate amount of enemies killed in a round
 		// {[]Level{linkage}, asteroid, 10000},
 		// {[]Level{linkage}, rollingCube, 2000},
+
+		{[]Level{pinctagon}, mothershipSuper, 150},
+		{[]Level{rolling_cubes_and_spinning_hexagons}, rollingCube, 120},
+		{[]Level{rolling_cubes_and_spinning_hexagons}, wary, 70},
+		{[]Level{challenge3}, asteroid, 2000},
+		{[]Level{challenge2}, rollingSphere, 123},
+		{[]Level{baf_rain}, bafBlue, 500},
+		{[]Level{hellskiv}, mothership, 10},
+		{[]Level{xcrush}, ufo, 15},
+		{[]Level{xcrush}, rollingCube, 100},
+		{[]Level{xcrush}, bafBlue, 300},
+		{[]Level{xcrush}, bafRed, 70},
+		{[]Level{_0800}, wary, 200},
+		{[]Level{angry_kouglof}, baf, 300},
+		{[]Level{angry_kouglof}, mothership, 100},
+		{[]Level{teampewnejos}, inertiac, 60},
+		{[]Level{laser}, rollingSphere, 5},
+		{[]Level{laser}, asteroid, 2000},
+		{[]Level{cube}, ufo, 8},
+		{[]Level{blindness}, crowder, 50},
+		{[]Level{blindness}, wary, 20},
+		{[]Level{mothership_mix}, mothership, 100},
+		{[]Level{the_generator}, bafBlue, 1000},
+		{[]Level{the_generator}, rollingCube, 300},
+		{[]Level{the_generator}, crowder, 60},
+		{[]Level{inertiacs_spawner}, inertiac, 200},
+		{[]Level{felp}, bafBlue, 200},
+		{[]Level{crasbaf}, asteroid, 4000},
+		{[]Level{crasbaf}, baf, 3000},
+		{[]Level{crasbaf}, crowder, 400},
+		{[]Level{midnight}, rollingCube, 200},
+		{[]Level{midnight}, baf, 200},
+		{[]Level{zale}, mothership, 100},
+		{[]Level{zale}, baf, 100},
+		{[]Level{cube_prison}, rollingCube, 350},
+		{[]Level{cube_prison}, rollingSphere, 10},
+		{[]Level{ufomania}, ufo, 400},
+		{[]Level{deadline}, asteroid, 400},
+		{[]Level{deadline}, crowder, 150},
+		{[]Level{deadline}, wary, 100},
+		{[]Level{deadline}, ufo, 50},
+		// {[]Level{synthesis}, ???, ???}, In this level, use enemy that does not appear in many quests
 	}
 
 	template := getRandomElement(level_kill_requirements)
@@ -208,6 +250,9 @@ func RandomReachScoreQuest(levelIdFunc LevelIDWithNameFunc) (*ReachScoreQuest, e
 		// {restanvi, 200000, 200},
 		{linkage, 15000, 100},
 		// {linkage, 35000, 200},
+
+		// Community levels
+		{pinctagon, 30000, 100},
 	}
 	template := getRandomElement(reach_score_requirements)
 	level, err := levelIdFunc(LevelStrings[template.Level])
