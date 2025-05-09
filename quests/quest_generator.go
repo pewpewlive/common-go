@@ -83,7 +83,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		// Applies to official levels
 		{[]Level{asteroids}, asteroid, 300},
 		{[]Level{asteroids}, ufo, 10},
-		{[]Level{asteroids}, rollingCube, 200},
+		{[]Level{asteroids}, rollingCube, 50},
 		{[]Level{hexagon}, mothership, 200},
 		{[]Level{hexagon}, wary, 50},
 		{[]Level{hexagon}, inertiac, 35},
