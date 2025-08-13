@@ -1,4 +1,4 @@
-package main
+package blitz
 
 import (
 	"math/rand"
