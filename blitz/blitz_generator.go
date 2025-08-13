@@ -608,6 +608,16 @@ func generateUniqueRandomSubset(k, n int) []int {
 	return result
 }
 
+type SandboxKV struct {
+	Key   string
+	Value int
+}
+
+type RoundDescription struct {
+	Name       string
+	SandboxKVs []SandboxKV
+}
+
 // Returns `n` RoundDescriptions that are all different from each others
 func GetRoundDescriptions(n int) []RoundDescription {
 	indexes := generateUniqueRandomSubset(len(templates), n)
