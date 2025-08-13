@@ -151,9 +151,9 @@ func pickFromSet(values []int) func() int {
 	}
 }
 
-func pickFromRange(min int, max int) func() int {
+func pickFromInclusiveRange(min int, max int) func() int {
 	return func() int {
-		return rand.Intn(max-min) + min
+		return rand.Intn(1+max-min) + min
 	}
 }
 
@@ -281,7 +281,7 @@ var templates = []SandboxConfigTemplate{
 			key_Environment:          randomEnvironement(),
 			key_Asteroids:            constant(1),
 			key_BlueBAFs:             constant(1),
-			key_Environmentsize:      pickFromRange(2, 3),
+			key_Environmentsize:      pickFromInclusiveRange(2, 3),
 			key_Freezebombs:          constant(2),
 			key_Playerspeed:          constant(3),
 			key_Shieldcount:          constant(3),
@@ -357,7 +357,7 @@ var templates = []SandboxConfigTemplate{
 			key_BlueBAFs:           constant(4),
 			key_Environmentsize:    constant(2),
 			key_Inertiacs:          constant(1),
-			key_Exploders:          pickFromRange(0, 1),
+			key_Exploders:          pickFromInclusiveRange(0, 1),
 			key_Playerspeed:        constant(2),
 			key_Shieldboxfrequency: constant(1),
 			key_Weaponfrequency:    constant(0),
@@ -383,7 +383,7 @@ var templates = []SandboxConfigTemplate{
 		name: "UFOs vs 3Hz Hemisphere",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Playerspeed:        constant(2),
 			key_Shieldboxfrequency: constant(2),
 			key_UFOs:               constant(3),
@@ -396,7 +396,7 @@ var templates = []SandboxConfigTemplate{
 		name: "Rolling Spheres vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
 			key_RollingSpheres:     constant(4),
@@ -412,7 +412,7 @@ var templates = []SandboxConfigTemplate{
 		name: "Inertiacs and exploders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Exploders:          constant(1),
 			key_Inertiacs:          constant(3),
 			key_Lassolength:        constant(6),
@@ -428,8 +428,8 @@ var templates = []SandboxConfigTemplate{
 		name: "Crowders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
-			key_Brownians:          pickFromRange(0, 1),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
+			key_Brownians:          pickFromInclusiveRange(0, 1),
 			key_Crowders:           constant(3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
@@ -444,11 +444,11 @@ var templates = []SandboxConfigTemplate{
 		name: "Kamikaze vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Kamikaze:           constant(3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
-			key_RollingCubes:       pickFromRange(0, 2),
+			key_RollingCubes:       pickFromInclusiveRange(0, 2),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(2),
 			key_Weaponfrequency:    constant(0),
@@ -461,11 +461,11 @@ var templates = []SandboxConfigTemplate{
 		name: "Red motherships vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
 			key_RedMotherships:     constant(3),
-			key_RollingCubes:       pickFromRange(0, 2),
+			key_RollingCubes:       pickFromInclusiveRange(0, 2),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(2),
 			key_Weaponfrequency:    constant(0),
@@ -477,7 +477,7 @@ var templates = []SandboxConfigTemplate{
 		name: "Crowders, Inertiacs, Kamikaze vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Crowders:           constant(2),
 			key_Inertiacs:          constant(2),
 			key_Kamikaze:           constant(2),
