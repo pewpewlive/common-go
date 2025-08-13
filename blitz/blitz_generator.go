@@ -219,6 +219,55 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
+		// 15hz Triple with asteroids, inertiacs, UFOs, red BAFs
+		name: "Asteroids vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Asteroids:          constant(2),
+			key_Environment:        pickFromInclusiveRange(1, 3),
+			key_Environmentsize:    constant(4),
+			key_Freezebombs:        constant(1),
+			key_Inertiacs:          constant(1),
+			key_RedBAFs:            constant(1),
+			key_Shieldboxfrequency: constant(1),
+			key_Shieldcount:        constant(3),
+			key_UFOs:               constant(1),
+			key_Weaponfrequency:    constant(7),
+			key_Weapontype:         weapon(Weapon_Triple),
+		},
+	},
+	{
+		// 10hz Double with rolling cubes, waries, and small atomize bombs
+		name: "Rolling Cubes & Waries vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Environment:                constant(0),
+			key_Environmentsize:            constant(0),
+			key_RollingCubes:               constant(2),
+			key_Shieldboxfrequency:         constant(1),
+			key_Smallatomizebombs:          constant(2),
+			key_Waries:                     constant(2),
+			key_Weaponboxfrequency:         constant(1),
+			key_Weaponboxshootingfrequency: constant(6),
+			key_Weaponboxtype:              weapon(Weapon_Triple),
+			key_Weaponfrequency:            constant(6),
+			key_Weapontype:                 weapon(Weapon_Double),
+		},
+	},
+	{
+		// 10hz Double with crowders and brownians, no shield powerups
+		name: "Crowders vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Brownians:                  constant(1),
+			key_Crowders:                   constant(2),
+			key_Environment:                pickFromInclusiveRange(0, 2),
+			key_Shieldcount:                constant(4),
+			key_Weaponboxfrequency:         constant(1),
+			key_Weaponboxshootingfrequency: constant(7),
+			key_Weaponboxtype:              weapon(Weapon_Triple),
+			key_Weaponfrequency:            constant(6),
+			key_Weapontype:                 weapon(Weapon_Double),
+		},
+	},
+	{
 		// 1hz Hemisphere with yellow and red BAFs, and optional blue BAFs
 		name: "BAFs vs 1Hz Hemisphere",
 		keys: map[SandboxKey]func() int{
@@ -298,6 +347,22 @@ var templates = []SandboxConfigTemplate{
 			key_Weaponboxtype:              weapon(Weapon_Triple),
 			key_Weaponfrequency:            constant(5),
 			key_Weapontype:                 weapon(Weapon_Shotgun),
+		},
+	},
+	{
+		// 1hz Shotgun with pink, orange, green motherships, and score boxes
+		name: "Motherships vs 1Hz Shotgun",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        pickFromInclusiveRange(0, 2),
+			key_Environmentsize:    constant(1),
+			key_GreenMotherships:   constant(1),
+			key_OrangeMotherships:  constant(1),
+			key_PinkMotherships:    constant(2),
+			key_Repulsivebombs:     constant(2),
+			key_Scoreboxfrequency:  constant(2),
+			key_Shieldboxfrequency: constant(1),
+			key_Weaponfrequency:    constant(0),
+			key_Weapontype:         weapon(Weapon_Shotgun),
 		},
 	},
 	{
