@@ -205,7 +205,7 @@ type SandboxConfigTemplate struct {
 var templates = []SandboxConfigTemplate{
 	{
 		// Mothership, bullet
-		name: "Mothership vs bullets",
+		name: "Mothership vs Bullets",
 		keys: map[SandboxKey]func() int{
 			key_Environment:                randomEnvironement(),
 			key_Environmentsize:            constant(2),
@@ -220,7 +220,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Mothership, laser
-		name: "Mothership vs laser",
+		name: "Mothership vs Laser",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
 			key_Environmentsize:    constant(2),
@@ -234,7 +234,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Multiple super motherships, bombs, large area
-		name: "Supermotherships vs bombs",
+		name: "Supermotherships vs Bombs",
 		keys: map[SandboxKey]func() int{
 			key_Environment:           randomEnvironement(),
 			key_Environmentsize:       constant(3),
@@ -251,7 +251,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Multiple enemies, weapon shotgun, large area
-		name: "Multiple enemies vs shotgun",
+		name: "Multiple enemies vs Shotgun",
 		keys: map[SandboxKey]func() int{
 			key_Environment:                randomEnvironement(),
 			key_Asteroids:                  constant(1),
@@ -275,8 +275,8 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Lots cyan super motherships, fast shotgun
-		name: "Cyan super motherships vs fast shotgun",
+		// Lots cyan super motherships, bombs
+		name: "Cyan super motherships vs Bombs",
 		keys: map[SandboxKey]func() int{
 			key_Environment:          randomEnvironement(),
 			key_Asteroids:            constant(1),
@@ -293,7 +293,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Lots of yellow BAFs, player can't shoot, have to get score boxes
-		name: "yellow BAFs and score boxes",
+		name: "Yellow BAFs and score boxes",
 		keys: map[SandboxKey]func() int{
 			key_Environment:                randomEnvironement(),
 			key_BAFs:                       constant(2),
@@ -351,7 +351,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// 1Hz Hemisphere with blue BAFs and inertiac, and optional Exploder
-		name: "blue BAFs and inertiac vs 1Hz Hemisphere",
+		name: "Blue BAFs and inertiac vs 1Hz Hemisphere",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
 			key_BlueBAFs:           constant(4),
@@ -366,7 +366,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// 2Hz Hemisphere with lots of kamikaze, a few exploders
-		name: "kamikaze vs 2Hz Hemisphere",
+		name: "Kamikaze vs 2Hz Hemisphere",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironementExluding([]Environment{Env_LeftEqualDanger}),
 			key_Environmentsize:    constant(2),
@@ -409,7 +409,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Lasso with inertiacs and exploders
-		name: "inertiacs and exploders vs Lasso",
+		name: "Inertiacs and exploders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
 			key_Environmentsize:    pickFromRange(2, 3),
@@ -490,7 +490,6 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Large level
 		name: "Motherships vs Maces",
 		keys: map[SandboxKey]func() int{
 			key_Environment:       randomEnvironement(),
@@ -510,6 +509,7 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
+		// Maces with Kamikaze, Exploders
 		name: "Kamikaze vs Maces",
 		keys: map[SandboxKey]func() int{
 			key_Environment:       randomEnvironement(),
