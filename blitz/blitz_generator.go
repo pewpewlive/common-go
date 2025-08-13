@@ -309,7 +309,7 @@ var templates = []SandboxConfigTemplate{
 
 	{
 		// Lots of rolling spheres, player can't shoot, have to get score boxes
-		name: "yellow BAFs and score boxes",
+		name: "Rolling spheres and score boxes",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
 			key_Environmentsize:    constant(2),
@@ -323,7 +323,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Lots of red BAFs, player can't shoot, must use bombs
-		name: "red BAFs and score boxes",
+		name: "Red BAFs vs Bombs",
 		keys: map[SandboxKey]func() int{
 			key_Environment:       randomEnvironement(),
 			key_Environmentsize:   constant(2),
