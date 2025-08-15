@@ -12,6 +12,7 @@ type BlitzRound struct {
 }
 
 type BlitzResults struct {
-	Rounds  []BlitzRound  `json:"rounds"`
-	Players []BlitzPlayer `json:"players"`
+	Timestamp int64         `json:"timestamp"`
+	Rounds    []BlitzRound  `json:"rounds"`
+	Players   []BlitzPlayer `json:"players"`
 }
