@@ -5,6 +5,7 @@ type BlitzPlayer struct {
 	AccountID          string  `json:"account_id"`
 	DisconnectionRound int     `json:"disconnection_round,omitempty"`
 	Scores             []int64 `json:"scores"`
+	Points             int64   `json:"points"`
 }
 
 type BlitzRound struct {
