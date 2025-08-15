@@ -151,9 +151,9 @@ func pickFromSet(values []int) func() int {
 	}
 }
 
-func pickFromRange(min int, max int) func() int {
+func pickFromInclusiveRange(min int, max int) func() int {
 	return func() int {
-		return rand.Intn(max-min) + min
+		return rand.Intn(1+max-min) + min
 	}
 }
 
@@ -219,6 +219,153 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
+		// 15hz Triple with asteroids, inertiacs, UFOs, red BAFs
+		name: "Asteroids vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Asteroids:          constant(2),
+			key_Environment:        pickFromInclusiveRange(1, 3),
+			key_Environmentsize:    constant(4),
+			key_Freezebombs:        constant(1),
+			key_Inertiacs:          constant(1),
+			key_RedBAFs:            constant(1),
+			key_Shieldboxfrequency: constant(1),
+			key_Shieldcount:        constant(3),
+			key_UFOs:               constant(1),
+			key_Weaponfrequency:    constant(7),
+			key_Weapontype:         weapon(Weapon_Triple),
+		},
+	},
+	{
+		// 10hz Double with rolling cubes, waries, and small atomize bombs
+		name: "Rolling Cubes & Waries vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Environment:                constant(0),
+			key_Environmentsize:            constant(0),
+			key_RollingCubes:               constant(2),
+			key_Shieldboxfrequency:         constant(1),
+			key_Smallatomizebombs:          constant(2),
+			key_Waries:                     constant(2),
+			key_Weaponboxfrequency:         constant(1),
+			key_Weaponboxshootingfrequency: constant(6),
+			key_Weaponboxtype:              weapon(Weapon_Triple),
+			key_Weaponfrequency:            constant(6),
+			key_Weapontype:                 weapon(Weapon_Double),
+		},
+	},
+	{
+		// 10hz Double with crowders and brownians, no shield powerups
+		name: "Crowders vs Bullets",
+		keys: map[SandboxKey]func() int{
+			key_Brownians:                  constant(1),
+			key_Crowders:                   constant(2),
+			key_Environment:                pickFromInclusiveRange(0, 2),
+			key_Shieldcount:                constant(4),
+			key_Weaponboxfrequency:         constant(1),
+			key_Weaponboxshootingfrequency: constant(7),
+			key_Weaponboxtype:              weapon(Weapon_Triple),
+			key_Weaponfrequency:            constant(6),
+			key_Weapontype:                 weapon(Weapon_Double),
+		},
+	},
+	{
+		// 1hz Hemisphere with yellow and red BAFs, and optional blue BAFs
+		name: "BAFs vs 1Hz Hemisphere",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
+			key_BAFs:               constant(4),
+			key_Environmentsize:    constant(2),
+			key_Playerspeed:        constant(2),
+			key_RedBAFs:            constant(3),
+			key_BlueBAFs:           pickFromSet([]int{0, 3}),
+			key_Shieldboxfrequency: constant(1),
+			key_Weaponfrequency:    constant(0),
+			key_Weapontype:         weapon(Weapon_Hemisphere),
+		},
+	},
+	{
+		// 1Hz Hemisphere with blue BAFs and inertiac, and optional Exploder
+		name: "Blue BAFs and inertiac vs 1Hz Hemisphere",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
+			key_BlueBAFs:           constant(4),
+			key_Environmentsize:    constant(2),
+			key_Inertiacs:          constant(1),
+			key_Exploders:          pickFromInclusiveRange(0, 1),
+			key_Playerspeed:        constant(2),
+			key_Shieldboxfrequency: constant(1),
+			key_Weaponfrequency:    constant(0),
+			key_Weapontype:         weapon(Weapon_Hemisphere),
+		},
+	},
+	{
+		// 2Hz Hemisphere with lots of kamikaze, a few exploders
+		name: "Kamikaze vs 2Hz Hemisphere",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        randomEnvironementExluding([]Environment{Env_LeftEqualDanger}),
+			key_Environmentsize:    constant(2),
+			key_Exploders:          constant(1),
+			key_Kamikaze:           constant(4),
+			key_Playerspeed:        constant(2),
+			key_Shieldboxfrequency: constant(2),
+			key_Weaponfrequency:    constant(1),
+			key_Weapontype:         weapon(Weapon_Hemisphere),
+		},
+	},
+	{
+		// 3Hz Hemisphere with lots of UFOs
+		name: "UFOs vs 3Hz Hemisphere",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        randomEnvironement(),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
+			key_Playerspeed:        constant(2),
+			key_Shieldboxfrequency: constant(2),
+			key_UFOs:               constant(3),
+			key_Weaponfrequency:    constant(2),
+			key_Weapontype:         weapon(Weapon_Hemisphere),
+		},
+	},
+	{
+		// Multiple enemies, weapon shotgun, large area
+		name: "Multiple enemies vs Shotgun",
+		keys: map[SandboxKey]func() int{
+			key_Environment:                randomEnvironement(),
+			key_Asteroids:                  constant(1),
+			key_BAFs:                       constant(1),
+			key_Environmentsize:            constant(4),
+			key_Inertiacs:                  constant(1),
+			key_Kamikaze:                   constant(1),
+			key_Playerspeed:                constant(2),
+			key_RedMotherships:             constant(1),
+			key_Shieldboxfrequency:         constant(1),
+			key_Shieldcount:                constant(4),
+			key_Speedboxfrequency:          constant(1),
+			key_Spinies:                    constant(2),
+			key_SuperCyanMotherships:       constant(1),
+			key_SuperOrangeMotherships:     constant(1),
+			key_UFOs:                       constant(2),
+			key_Weaponboxshootingfrequency: constant(3),
+			key_Weaponboxtype:              weapon(Weapon_Triple),
+			key_Weaponfrequency:            constant(5),
+			key_Weapontype:                 weapon(Weapon_Shotgun),
+		},
+	},
+	{
+		// 1hz Shotgun with pink, orange, green motherships, and score boxes
+		name: "Motherships vs 1Hz Shotgun",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        pickFromInclusiveRange(0, 2),
+			key_Environmentsize:    constant(1),
+			key_GreenMotherships:   constant(1),
+			key_OrangeMotherships:  constant(1),
+			key_PinkMotherships:    constant(2),
+			key_Repulsivebombs:     constant(2),
+			key_Scoreboxfrequency:  constant(2),
+			key_Shieldboxfrequency: constant(1),
+			key_Weaponfrequency:    constant(0),
+			key_Weapontype:         weapon(Weapon_Shotgun),
+		},
+	},
+	{
 		// Mothership, laser
 		name: "Mothership vs Laser",
 		keys: map[SandboxKey]func() int{
@@ -250,38 +397,13 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Multiple enemies, weapon shotgun, large area
-		name: "Multiple enemies vs Shotgun",
-		keys: map[SandboxKey]func() int{
-			key_Environment:                randomEnvironement(),
-			key_Asteroids:                  constant(1),
-			key_BAFs:                       constant(1),
-			key_Environmentsize:            constant(4),
-			key_Inertiacs:                  constant(1),
-			key_Kamikaze:                   constant(1),
-			key_Playerspeed:                constant(2),
-			key_RedMotherships:             constant(1),
-			key_Shieldboxfrequency:         constant(1),
-			key_Shieldcount:                constant(4),
-			key_Speedboxfrequency:          constant(1),
-			key_Spinies:                    constant(2),
-			key_SuperCyanMotherships:       constant(1),
-			key_SuperOrangeMotherships:     constant(1),
-			key_UFOs:                       constant(2),
-			key_Weaponboxshootingfrequency: constant(3),
-			key_Weaponboxtype:              weapon(Weapon_Triple),
-			key_Weaponfrequency:            constant(5),
-			key_Weapontype:                 weapon(Weapon_Shotgun),
-		},
-	},
-	{
 		// Lots cyan super motherships, bombs
 		name: "Cyan super motherships vs Bombs",
 		keys: map[SandboxKey]func() int{
 			key_Environment:          randomEnvironement(),
 			key_Asteroids:            constant(1),
 			key_BlueBAFs:             constant(1),
-			key_Environmentsize:      pickFromRange(2, 3),
+			key_Environmentsize:      pickFromInclusiveRange(2, 3),
 			key_Freezebombs:          constant(2),
 			key_Playerspeed:          constant(3),
 			key_Shieldcount:          constant(3),
@@ -289,36 +411,6 @@ var templates = []SandboxConfigTemplate{
 			key_SuperCyanMotherships: constant(4),
 			key_Weaponfrequency:      constant(4),
 			key_Weapontype:           weapon(Weapon_Shotgun),
-		},
-	},
-	{
-		// Lots of yellow BAFs, player can't shoot, have to get score boxes
-		name: "Yellow BAFs and score boxes",
-		keys: map[SandboxKey]func() int{
-			key_Environment:                randomEnvironement(),
-			key_BAFs:                       constant(2),
-			key_Environmentsize:            constant(2),
-			key_Playerspeed:                constant(2),
-			key_Scoreboxfrequency:          constant(3),
-			key_Shieldboxfrequency:         constant(2),
-			key_Shieldcount:                constant(2),
-			key_Weaponboxshootingfrequency: constant(5),
-			key_Weaponboxtype:              weapon(Weapon_None),
-		},
-	},
-
-	{
-		// Lots of rolling spheres, player can't shoot, have to get score boxes
-		name: "Rolling spheres and score boxes",
-		keys: map[SandboxKey]func() int{
-			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    constant(2),
-			key_Playerspeed:        constant(2),
-			key_RollingSpheres:     constant(2),
-			key_Scoreboxfrequency:  constant(4),
-			key_Shieldboxfrequency: constant(2),
-			key_Weaponfrequency:    constant(0),
-			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 	{
@@ -335,68 +427,11 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// 1hz Hemisphere with yellow and red BAFs, and optional blue BAFs
-		name: "BAFs vs 1Hz Hemisphere",
-		keys: map[SandboxKey]func() int{
-			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
-			key_BAFs:               constant(4),
-			key_Environmentsize:    constant(2),
-			key_Playerspeed:        constant(2),
-			key_RedBAFs:            constant(3),
-			key_BlueBAFs:           pickFromSet([]int{0, 3}),
-			key_Shieldboxfrequency: constant(1),
-			key_Weaponfrequency:    constant(0),
-			key_Weapontype:         weapon(Weapon_Hemisphere),
-		},
-	},
-	{
-		// 1Hz Hemisphere with blue BAFs and inertiac, and optional Exploder
-		name: "Blue BAFs and inertiac vs 1Hz Hemisphere",
-		keys: map[SandboxKey]func() int{
-			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
-			key_BlueBAFs:           constant(4),
-			key_Environmentsize:    constant(2),
-			key_Inertiacs:          constant(1),
-			key_Exploders:          pickFromRange(0, 1),
-			key_Playerspeed:        constant(2),
-			key_Shieldboxfrequency: constant(1),
-			key_Weaponfrequency:    constant(0),
-			key_Weapontype:         weapon(Weapon_Hemisphere),
-		},
-	},
-	{
-		// 2Hz Hemisphere with lots of kamikaze, a few exploders
-		name: "Kamikaze vs 2Hz Hemisphere",
-		keys: map[SandboxKey]func() int{
-			key_Environment:        randomEnvironementExluding([]Environment{Env_LeftEqualDanger}),
-			key_Environmentsize:    constant(2),
-			key_Exploders:          constant(1),
-			key_Kamikaze:           constant(4),
-			key_Playerspeed:        constant(2),
-			key_Shieldboxfrequency: constant(2),
-			key_Weaponfrequency:    constant(1),
-			key_Weapontype:         weapon(Weapon_Hemisphere),
-		},
-	},
-	{
-		// 3Hz Hemisphere with lots of UFOs
-		name: "UFOs vs 3Hz Hemisphere",
-		keys: map[SandboxKey]func() int{
-			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
-			key_Playerspeed:        constant(2),
-			key_Shieldboxfrequency: constant(2),
-			key_UFOs:               constant(3),
-			key_Weaponfrequency:    constant(2),
-			key_Weapontype:         weapon(Weapon_Hemisphere),
-		},
-	},
-	{
 		// Lasso with lots of rolling spheres
 		name: "Rolling Spheres vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
 			key_RollingSpheres:     constant(4),
@@ -412,7 +447,7 @@ var templates = []SandboxConfigTemplate{
 		name: "Inertiacs and exploders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Exploders:          constant(1),
 			key_Inertiacs:          constant(3),
 			key_Lassolength:        constant(6),
@@ -428,8 +463,8 @@ var templates = []SandboxConfigTemplate{
 		name: "Crowders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
-			key_Brownians:          pickFromRange(0, 1),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
+			key_Brownians:          pickFromInclusiveRange(0, 1),
 			key_Crowders:           constant(3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
@@ -444,11 +479,11 @@ var templates = []SandboxConfigTemplate{
 		name: "Kamikaze vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Kamikaze:           constant(3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
-			key_RollingCubes:       pickFromRange(0, 2),
+			key_RollingCubes:       pickFromInclusiveRange(0, 2),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(2),
 			key_Weaponfrequency:    constant(0),
@@ -461,11 +496,11 @@ var templates = []SandboxConfigTemplate{
 		name: "Red motherships vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Lassolength:        constant(6),
 			key_Playerspeed:        constant(2),
 			key_RedMotherships:     constant(3),
-			key_RollingCubes:       pickFromRange(0, 2),
+			key_RollingCubes:       pickFromInclusiveRange(0, 2),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(2),
 			key_Weaponfrequency:    constant(0),
@@ -477,7 +512,7 @@ var templates = []SandboxConfigTemplate{
 		name: "Crowders, Inertiacs, Kamikaze vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
-			key_Environmentsize:    pickFromRange(2, 3),
+			key_Environmentsize:    pickFromInclusiveRange(2, 3),
 			key_Crowders:           constant(2),
 			key_Inertiacs:          constant(2),
 			key_Kamikaze:           constant(2),
@@ -585,6 +620,35 @@ var templates = []SandboxConfigTemplate{
 			key_Speedboxvalue:     constant(1),
 			key_Weaponfrequency:   constant(0),
 			key_Weapontype:        weapon(Weapon_None),
+		},
+	},
+	{
+		// Lots of yellow BAFs, player can't shoot, have to get score boxes
+		name: "Yellow BAFs and score boxes",
+		keys: map[SandboxKey]func() int{
+			key_Environment:                randomEnvironement(),
+			key_BAFs:                       constant(2),
+			key_Environmentsize:            constant(2),
+			key_Playerspeed:                constant(2),
+			key_Scoreboxfrequency:          constant(3),
+			key_Shieldboxfrequency:         constant(2),
+			key_Shieldcount:                constant(2),
+			key_Weaponboxshootingfrequency: constant(5),
+			key_Weaponboxtype:              weapon(Weapon_None),
+		},
+	},
+	{
+		// Lots of rolling spheres, player can't shoot, have to get score boxes
+		name: "Rolling spheres and score boxes",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        randomEnvironement(),
+			key_Environmentsize:    constant(2),
+			key_Playerspeed:        constant(2),
+			key_RollingSpheres:     constant(2),
+			key_Scoreboxfrequency:  constant(4),
+			key_Shieldboxfrequency: constant(2),
+			key_Weaponfrequency:    constant(0),
+			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 }
