@@ -79,7 +79,8 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{}, inertiac, 50},
 		{[]Level{}, mothership, 100},
 		{[]Level{}, rollingCube, 100},
-		{[]Level{}, wary, 100},
+		{[]Level{}, wary, 50},
+
 		// Applies to official levels
 		{[]Level{asteroids}, asteroid, 300},
 		{[]Level{asteroids}, ufo, 10},
@@ -90,7 +91,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{eskiv}, mothership, 30},
 		{[]Level{waves}, baf, 2000},
 		{[]Level{waves}, bafBlue, 200},
-		{[]Level{waves}, bafRed, 200},
+		// {[]Level{waves}, bafRed, 200},
 		{[]Level{waves}, mothership, 10},
 		{[]Level{waves}, inertiac, 15},
 		{[]Level{fury}, mothership, 100},
@@ -136,7 +137,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{restanvi}, rollingCube, 100},
 		{[]Level{restanvi}, wary, 50},
 		// Requirements to be made by someone with access to tools
-		//   which estimate amount of enemies killed in a round
+		//   which estimate amount of enemies killed
 		// {[]Level{linkage}, asteroid, 10000},
 		// {[]Level{linkage}, rollingCube, 2000},
 
@@ -152,12 +153,15 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{xcrush}, bafBlue, 300},
 		{[]Level{xcrush}, bafRed, 70},
 		{[]Level{_0800}, wary, 200},
+		{[]Level{_0800}, rollingCube, 400},
 		{[]Level{angry_kouglof}, baf, 300},
 		{[]Level{angry_kouglof}, mothership, 100},
 		{[]Level{teampewnejos}, inertiac, 60},
 		{[]Level{laser}, rollingSphere, 5},
 		{[]Level{laser}, asteroid, 2000},
 		{[]Level{cube}, ufo, 8},
+		{[]Level{cube}, mothership, 15},
+		{[]Level{cube}, rollingCube, 350},
 		{[]Level{blindness}, crowder, 50},
 		{[]Level{blindness}, wary, 20},
 		{[]Level{mothership_mix}, mothership, 100},
@@ -183,7 +187,7 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{bee_hive}, baf, 3000},
 		{[]Level{bee_hive}, rollingCube, 50},
 		{[]Level{waves_pro}, baf, 1000},
-		{[]Level{field_of_wormholes}, baf, 1000},
+		{[]Level{field_of_wormholes}, baf, 1500},
 		{[]Level{inertiacs_rage}, inertiac, 100},
 		{[]Level{stripped_hell}, mothership, 30},
 		{[]Level{deadzone}, mothership, 100},
