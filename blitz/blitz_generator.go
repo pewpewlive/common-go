@@ -284,7 +284,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// 1Hz Hemisphere with blue BAFs and inertiac, and optional Exploder
-		name: "Blue BAFs and inertiac vs 1Hz Hemisphere",
+		name: "Blue BAFs & Inertiacs vs 1Hz Hemisphere",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironementExluding([]Environment{Env_Lattice, Env_LeftEqualDanger}),
 			key_BlueBAFs:           constant(4),
@@ -380,7 +380,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Mothership, laser
-		name: "Mothership vs Laser",
+		name: "Motherships vs Laser",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
 			key_Environmentsize:    constant(2),
@@ -496,7 +496,7 @@ var templates = []SandboxConfigTemplate{
 	},
 	{
 		// Lasso with inertiacs and exploders
-		name: "Inertiacs and exploders vs Lasso",
+		name: "Inertiacs & Exploders vs Lasso",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
 			key_Environmentsize:    pickFromInclusiveRange(2, 3),
@@ -628,7 +628,7 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		name: "Super Motherships + Asteroids vs Maces",
+		name: "Super Motherships & Asteroids vs Maces",
 		keys: map[SandboxKey]func() int{
 			key_Environment:          randomEnvironement(),
 			key_Asteroids:            constant(2),
@@ -659,7 +659,7 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		name: "Exploders + Inertiacs vs Maces",
+		name: "Exploders & Inertiacs vs Maces",
 		keys: map[SandboxKey]func() int{
 
 			key_Environment:       randomEnvironement(),
