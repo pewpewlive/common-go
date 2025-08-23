@@ -205,7 +205,7 @@ type SandboxConfigTemplate struct {
 var templates = []SandboxConfigTemplate{
 	{
 		// Mothership, bullet
-		name: "Mothership vs Bullets",
+		name: "Motherships vs Bullets",
 		keys: map[SandboxKey]func() int{
 			key_Environment:                randomEnvironement(),
 			key_Environmentsize:            constant(2),
@@ -366,6 +366,19 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
+		// Many BAFs, optional inertiacs, 3Hz or 5Hz shotgun
+		name: "BAFs vs Shotgun",
+		keys: map[SandboxKey]func() int{
+			key_BAFs:            constant(2),
+			key_BlueBAFs:        constant(2),
+			key_Environment:     pickFromInclusiveRange(0, 3),
+			key_Inertiacs:       pickFromInclusiveRange(0, 1),
+			key_RedBAFs:         constant(4),
+			key_Weaponfrequency: pickFromInclusiveRange(2, 3),
+			key_Weapontype:      weapon(Weapon_Shotgun),
+		},
+	},
+	{
 		// Mothership, laser
 		name: "Mothership vs Laser",
 		keys: map[SandboxKey]func() int{
@@ -377,6 +390,35 @@ var templates = []SandboxConfigTemplate{
 			key_Shieldcount:        constant(2),
 			key_Weaponfrequency:    constant(2),
 			key_Weapontype:         weapon(Weapon_Laser),
+		},
+	},
+	{
+		// Many inertiacs and rolling cubes, laser, slow player
+		name: "Inertiacs vs 3Hz Laser & slow player",
+		keys: map[SandboxKey]func() int{
+			key_Environment:     randomEnvironement(),
+			key_Inertiacs:       constant(2),
+			key_Playerspeed:     constant(0),
+			key_RollingCubes:    constant(2),
+			key_Shieldcount:     constant(3),
+			key_Weaponfrequency: constant(2),
+			key_Weapontype:      weapon(Weapon_Laser),
+		},
+	},
+	{
+		// Many orange motherships (normal and super-), rolling spheres, 2HZ laser, large area
+		name: "Orange Motherships vs 2Hz Laser",
+		keys: map[SandboxKey]func() int{
+			key_Environment:            randomEnvironement(),
+			key_Environmentsize:        constant(3),
+			key_OrangeMotherships:      constant(3),
+			key_Playerspeed:            constant(3),
+			key_Repulsivebombs:         constant(2),
+			key_RollingSpheres:         constant(2),
+			key_Shieldcount:            constant(3),
+			key_SuperOrangeMotherships: constant(2),
+			key_Weaponfrequency:        constant(1),
+			key_Weapontype:             weapon(Weapon_Laser),
 		},
 	},
 	{
@@ -414,7 +456,7 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Lots of red BAFs, player can't shoot, must use bombs
+		// Lots of red BAFs, no shooting, must use bombs
 		name: "Red BAFs vs Bombs",
 		keys: map[SandboxKey]func() int{
 			key_Environment:       randomEnvironement(),
@@ -424,6 +466,16 @@ var templates = []SandboxConfigTemplate{
 			key_Shieldcount:       constant(2),
 			key_Smallatomizebombs: constant(2),
 			key_Weapontype:        weapon(Weapon_None),
+		},
+	},
+	{
+		// Lots of asteroids, no shooting, must use bombs
+		name: "Asteroids vs Bombs",
+		keys: map[SandboxKey]func() int{
+			key_Asteroids:          constant(3),
+			key_Environment:        pickFromInclusiveRange(0, 1),
+			key_Shieldboxfrequency: constant(2),
+			key_Smallfreezebombs:   constant(3),
 		},
 	},
 	{
@@ -609,6 +661,7 @@ var templates = []SandboxConfigTemplate{
 	{
 		name: "Exploders + Inertiacs vs Maces",
 		keys: map[SandboxKey]func() int{
+
 			key_Environment:       randomEnvironement(),
 			key_Environmentsize:   constant(3),
 			key_Exploders:         constant(2),
@@ -623,7 +676,54 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Lots of yellow BAFs, player can't shoot, have to get score boxes
+		// Rolling spheres and rolling cubes, motherships, optional bafs, symbiose mode
+		name: "Multiple enemies vs Plasma",
+		keys: map[SandboxKey]func() int{
+			key_BAFs:               pickFromInclusiveRange(0, 1),
+			key_BlueBAFs:           pickFromInclusiveRange(0, 1),
+			key_Environment:        constant(1),
+			key_Environmentsize:    constant(3),
+			key_OrangeMotherships:  constant(1),
+			key_Playerspeed:        constant(3),
+			key_Playertype:         constant(1),
+			key_RedBAFs:            pickFromInclusiveRange(0, 1),
+			key_RollingCubes:       constant(2),
+			key_RollingSpheres:     constant(2),
+			key_Shieldboxfrequency: constant(2),
+			key_Shieldcount:        constant(3),
+		},
+	},
+	{
+		// Motherships (mainly cyan), repulsive bombs, symbiose mode
+		name: "Motherships vs Plasma",
+		keys: map[SandboxKey]func() int{
+			key_CyanMotherships:    constant(2),
+			key_Environment:        constant(1),
+			key_GreenMotherships:   constant(1),
+			key_OrangeMotherships:  constant(1),
+			key_PinkMotherships:    pickFromInclusiveRange(0, 1),
+			key_Playerspeed:        constant(3),
+			key_Playertype:         constant(1),
+			key_Repulsivebombs:     constant(2),
+			key_Shieldboxfrequency: constant(1),
+			key_Shieldcount:        constant(3),
+		},
+	},
+	{
+		// Many rolling spheres, score boxes, symbiose mode
+		name: "Rolling Spheres vs Plasma",
+		keys: map[SandboxKey]func() int{
+			key_Environment:        pickFromInclusiveRange(0, 1),
+			key_Playerspeed:        constant(3),
+			key_Playertype:         constant(1),
+			key_RollingSpheres:     constant(3),
+			key_Scoreboxfrequency:  constant(4),
+			key_Shieldboxfrequency: constant(2),
+			key_Shieldcount:        constant(3),
+		},
+	},
+	{
+		// Lots of yellow BAFs, score boxes
 		name: "Yellow BAFs and score boxes",
 		keys: map[SandboxKey]func() int{
 			key_Environment:                randomEnvironement(),
@@ -638,7 +738,7 @@ var templates = []SandboxConfigTemplate{
 		},
 	},
 	{
-		// Lots of rolling spheres, player can't shoot, have to get score boxes
+		// Lots of rolling spheres, no shooting, score boxes
 		name: "Rolling spheres and score boxes",
 		keys: map[SandboxKey]func() int{
 			key_Environment:        randomEnvironement(),
