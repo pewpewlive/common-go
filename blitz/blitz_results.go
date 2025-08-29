@@ -9,8 +9,8 @@ type BlitzPlayer struct {
 	TotalPoints int64 `json:"points"`
 	// The points before the start of the last round.
 	// Is used to break ties.
-	PreviousTotalPoints int64   `json:"previous_points"`
-	ReplayHashes        []int64 `json:"replay_hashes"`
+	PreviousTotalPoints int64    `json:"previous_points"`
+	ReplayHashes        []string `json:"replay_hashes"`
 }
 
 type BlitzRound struct {
