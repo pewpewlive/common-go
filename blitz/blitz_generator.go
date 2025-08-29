@@ -476,6 +476,7 @@ var templates = []SandboxConfigTemplate{
 			key_Environment:        pickFromInclusiveRange(0, 1),
 			key_Shieldboxfrequency: constant(2),
 			key_Smallfreezebombs:   constant(3),
+			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 	{
@@ -691,6 +692,7 @@ var templates = []SandboxConfigTemplate{
 			key_RollingSpheres:     constant(2),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(3),
+			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 	{
@@ -707,6 +709,7 @@ var templates = []SandboxConfigTemplate{
 			key_Repulsivebombs:     constant(2),
 			key_Shieldboxfrequency: constant(1),
 			key_Shieldcount:        constant(3),
+			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 	{
@@ -720,6 +723,7 @@ var templates = []SandboxConfigTemplate{
 			key_Scoreboxfrequency:  constant(4),
 			key_Shieldboxfrequency: constant(2),
 			key_Shieldcount:        constant(3),
+			key_Weapontype:         weapon(Weapon_None),
 		},
 	},
 	{
