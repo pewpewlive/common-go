@@ -12,6 +12,7 @@ const (
 	pandemonium
 	partitioner
 	symbiosis
+	oasis
 
 	// Featured
 	eskiv1024
@@ -111,6 +112,7 @@ var LevelStrings = map[Level]string{
 	pandemonium: "pandemonium",
 	partitioner: "partitioner",
 	symbiosis:   "symbiosis",
+	oasis:       "oasis",
 
 	// Featured
 	eskiv1024:      "8moMdFFM34sHzu1YZCMHl",
