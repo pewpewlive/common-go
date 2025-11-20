@@ -108,6 +108,10 @@ func RandomDestroyEnemiesQuest(levelIdFunc LevelIDWithNameFunc) (*DestroyEnemies
 		{[]Level{symbiosis}, rollingCube, 300},
 		{[]Level{symbiosis}, inertiac, 100},
 		{[]Level{symbiosis}, kamikaze, 100},
+		{[]Level{oasis}, crowder, 100},
+		{[]Level{oasis}, inertiac, 15},
+		{[]Level{oasis}, rollingCube, 20},
+		{[]Level{oasis}, mothership, 50},
 
 		// Featured community levels
 		{[]Level{cozone}, asteroid, 1000},
@@ -245,6 +249,7 @@ func RandomReachScoreQuest(levelIdFunc LevelIDWithNameFunc) (*ReachScoreQuest, e
 		// {partitioner, 45000, 200},
 		{symbiosis, 50000, 100},
 		// {symbiosis, 80000, 200},
+		{oasis, 30000, 100},
 
 		// Featured levels
 		{eskiv1024, 150, 100},
@@ -306,6 +311,7 @@ func RandomSurviveDurationQuest(levelIdFunc LevelIDWithNameFunc) (*SurviveDurati
 		{partitioner, 60, 100},
 		// {partitioner, 80, 200},
 		// {partitioner, 100, 300},
+		{oasis, 120, 100},
 
 		// Featured community levels
 		{cozone, 90, 100},
