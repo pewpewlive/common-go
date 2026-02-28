@@ -37,7 +37,20 @@ func TestStringToExpandedChars(t *testing.T) {
 		actual := common_helpers.StringToExpandedChars("##aabbccdd")
 		assert.Equal(t, expected, actual)
 	}
+}
 
+func TestExpandedCharsToString(t *testing.T) {
+	// Helper function that converts a string to expanded chars and back, and checks that the result is equal to what is expected.
+	check := func(input string, expected string) {
+		expandedChars := common_helpers.StringToExpandedChars(input)
+		output := common_helpers.ExpandedCharsToString(expandedChars)
+		assert.Equal(t, expected, output)
+	}
+	check("A", "A")
+	check("A#B", "A")
+	check("A#########B", "AB")
+	check("A#ffffffffB", "AB")
+	check("A#aabbccddB#aabbccddC", "A#aabbccddBC")
 }
 
 func TestStripColorsFromString(t *testing.T) {

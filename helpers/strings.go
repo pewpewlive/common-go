@@ -35,8 +35,20 @@ func StringToExpandedChars(str string) []ExpandedChar {
 		}
 		expandedChars = append(expandedChars, ExpandedChar{Char: char, Color: currentColor})
 	}
-
 	return expandedChars
+}
+
+func ExpandedCharsToString(expandedChars []ExpandedChar) string {
+	var builder strings.Builder
+	var currentColor uint32 = 0xffffffff
+	for _, expandedChar := range expandedChars {
+		if expandedChar.Color != currentColor {
+			builder.WriteString(fmt.Sprintf("#%08x", expandedChar.Color))
+			currentColor = expandedChar.Color
+		}
+		builder.WriteRune(expandedChar.Char)
+	}
+	return builder.String()
 }
 
 // StripColorsFromString removes the colors of a given username.
