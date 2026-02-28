@@ -11,24 +11,33 @@ import (
 )
 
 func TestStringToExpandedChars(t *testing.T) {
-	expected := []common_helpers.ExpandedChar{
-		{Char: 'M', Color: 0xffffffff},
-		{Char: 'ū', Color: 0xffffffff},
-		{Char: 's', Color: 0xffffffff},
-		{Char: 'ų', Color: 0xffffffff},
-		{Char: 'Š', Color: 0x007fffff},
-		{Char: 'o', Color: 0x007fffff},
-		{Char: 'k', Color: 0xffff00ff},
-		{Char: 'i', Color: 0x00ffffff},
-		{Char: 'ų', Color: 0x000000ff},
-		{Char: 'P', Color: 0xffff00ff},
-		{Char: 'a', Color: 0xffff00ff},
-		{Char: 'm', Color: 0xffff00ff},
+	{
+		expected := []common_helpers.ExpandedChar{
+			{Char: 'M', Color: 0xffffffff},
+			{Char: 'ū', Color: 0xffffffff},
+			{Char: 's', Color: 0xffffffff},
+			{Char: 'ų', Color: 0xffffffff},
+			{Char: 'Š', Color: 0x007fffff},
+			{Char: 'o', Color: 0x007fffff},
+			{Char: 'k', Color: 0xffff00ff},
+			{Char: 'i', Color: 0x00ffffff},
+			{Char: 'ų', Color: 0x000000ff},
+			{Char: 'P', Color: 0xffff00ff},
+			{Char: 'a', Color: 0xffff00ff},
+			{Char: 'm', Color: 0xffff00ff},
+		}
+		actual := common_helpers.StringToExpandedChars("Mūsų#007fffffŠo#ffff00ffk#00ffffffi#000000ffų#ffff00ffPam")
+		assert.Equal(t, expected, actual)
+	}
+	{
+		// Interpret broken colors as white.
+		expected := []common_helpers.ExpandedChar{
+			{Char: 'd', Color: 0xffffffff},
+		}
+		actual := common_helpers.StringToExpandedChars("##aabbccdd")
+		assert.Equal(t, expected, actual)
 	}
 
-	actual := common_helpers.StringToExpandedChars("Mūsų#007fffffŠo#ffff00ffk#00ffffffi#000000ffų#ffff00ffPam")
-
-	assert.Equal(t, expected, actual)
 }
 
 func TestStripColorsFromString(t *testing.T) {
@@ -40,7 +49,8 @@ func TestStripColorsFromString(t *testing.T) {
 	assert.Equal(t, "AAABBBCCC", common_helpers.StripColorsFromString("AAA#00112233BBB#44556677CCC"))
 	// Incorrectly formatted strings
 	assert.Equal(t, "AAA", common_helpers.StripColorsFromString("AAA#0011"))
-	assert.Equal(t, "AAABBB", common_helpers.StripColorsFromString("AAA#0011#22334455BBB"))
+	assert.Equal(t, "AAA34455BBB", common_helpers.StripColorsFromString("AAA#0011#22334455BBB"))
+	assert.Equal(t, "dTOTO", common_helpers.StripColorsFromString("##aabbccddTOTO"))
 }
 
 func TestMostFrequentString(t *testing.T) {

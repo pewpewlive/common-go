@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"bufio"
 	"fmt"
 	"math"
 	"strconv"
@@ -14,38 +13,26 @@ type ExpandedChar struct {
 }
 
 func StringToExpandedChars(str string) []ExpandedChar {
-	buffer := bufio.NewReader(strings.NewReader(str))
-
 	expandedChars := make([]ExpandedChar, 0)
-	escapedChar := false
 	var currentColor uint32 = 0xffffffff
-	for {
-		char, _, err := buffer.ReadRune()
-		if err != nil {
-			break
-		}
-
-		if char == '#' && !escapedChar {
-			colorBuffer := make([]byte, 8)
-			_, err := buffer.Read(colorBuffer)
-			if err != nil {
+	runes := []rune(str)
+	for i := 0; i < len(runes); i++ {
+		char := runes[i]
+		if char == '#' {
+			if i+8 < len(runes) {
+				colorStr := string(runes[i+1 : i+9])
+				color, err := strconv.ParseUint(colorStr, 16, 32)
+				if err == nil {
+					currentColor = uint32(color)
+				} else {
+					currentColor = 0xffffffff
+				}
+				i += 8
+				continue
+			} else {
 				break
 			}
-
-			color, err := strconv.ParseInt(string(colorBuffer), 16, 0)
-			if err != nil {
-				break
-			}
-			currentColor = uint32(color)
-			continue
 		}
-
-		if char == '\\' && !escapedChar {
-			escapedChar = true
-			continue
-		}
-
-		escapedChar = false
 		expandedChars = append(expandedChars, ExpandedChar{Char: char, Color: currentColor})
 	}
 
@@ -54,20 +41,12 @@ func StringToExpandedChars(str string) []ExpandedChar {
 
 // StripColorsFromString removes the colors of a given username.
 func StripColorsFromString(name string) string {
-	s := ""
-	skipCount := 0
-	for _, char := range name {
-		// fmt.Printf("character %c starts at byte position %d\n", char, pos)
-		if char == '#' {
-			skipCount = 9
-		}
-		if skipCount == 0 {
-			s = s + string(char)
-		} else {
-			skipCount--
-		}
+	expandedChars := StringToExpandedChars(name)
+	var builder strings.Builder
+	for _, expandedChar := range expandedChars {
+		builder.WriteRune(expandedChar.Char)
 	}
-	return s
+	return builder.String()
 }
 
 // MostFrequentString finds the most frequent string in a string slice
